@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blog · Phil Choi</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Instrument+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --font-display:'DM Serif Display',Georgia,'Times New Roman',serif;
+  --font-body:'Instrument Sans','Helvetica Neue',Helvetica,Arial,sans-serif;
+  --font-mono:'JetBrains Mono','SF Mono','Fira Code',monospace;
+  --text-xs:0.778rem;--text-sm:0.889rem;--text-base:1rem;--text-lg:1.25rem;
+  --text-xl:1.563rem;--text-2xl:1.953rem;--text-3xl:2.441rem;
+  --text-4xl:3.052rem;--text-5xl:3.815rem;
+  --sp-half:0.25rem;--sp-1:0.5rem;--sp-2:1rem;--sp-3:1.5rem;--sp-4:2rem;
+  --sp-6:3rem;--sp-8:4rem;--sp-12:6rem;--sp-16:8rem;
+  --max-w:1280px;--max-w-narrow:720px;--gutter:clamp(1rem,4vw,1.5rem);
+  --duration:150ms;--ease:ease;--header-h:64px;
+  --section-pad:clamp(3.5rem,7vw,6rem);--section-pad-lg:clamp(4.5rem,9vw,8rem);
+  --bg:#0E0E0D;--bg-elevated:#1A1918;--bg-recessed:#070706;
+  --bg-inverse:#F5F4F0;--text-1:#F0EFEB;--text-2:#8A8783;--text-3:#5A5753;
+  --accent:#C41B1B;--accent-hover:#E02020;--border:#2A2826;--border-strong:#3D3A37;
+}
+html{font-size:18px;scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
+@media(max-width:768px){html{font-size:16px}}
+body{font-family:var(--font-body);font-size:var(--text-base);line-height:1.65;color:var(--text-1);background:var(--bg);overflow-x:hidden}
+::selection{background:var(--accent);color:#fff}
+h1,h2,h3{font-family:var(--font-display);font-weight:400;color:var(--text-1);hanging-punctuation:first last}
+h4,h5,h6{font-family:var(--font-body);font-weight:600;color:var(--text-1)}
+h1{font-size:clamp(var(--text-4xl),6vw,var(--text-5xl));line-height:1.05;letter-spacing:-0.02em}
+h2{font-size:clamp(var(--text-2xl),4vw,var(--text-3xl));line-height:1.08;letter-spacing:-0.015em}
+h4{font-size:var(--text-xl);line-height:1.25;letter-spacing:-0.005em}
+p{color:var(--text-2);max-width:68ch}
+a{color:var(--accent);text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:1px;transition:color var(--duration) var(--ease),text-decoration-thickness var(--duration) var(--ease)}
+a:hover{color:var(--accent-hover);text-decoration-thickness:2px}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.wrap{max-width:var(--max-w);margin:0 auto;padding:0 var(--gutter)}
+.section{padding:var(--section-pad) 0}
+.section--elevated{background:var(--bg-elevated)}
+.section--recessed{background:var(--bg-recessed)}
+.label{font-family:var(--font-mono);font-size:var(--text-xs);font-weight:500;letter-spacing:.07em;text-transform:uppercase;color:var(--text-3);display:block;margin-bottom:var(--sp-2)}
+.label--red{color:var(--accent)}
+.btn{display:inline-flex;align-items:center;justify-content:center;font-family:var(--font-body);font-size:var(--text-xs);font-weight:600;letter-spacing:.07em;text-transform:uppercase;text-decoration:none;padding:.8rem 1.75rem;min-height:44px;cursor:pointer;border:1.5px solid transparent;transition:background-color var(--duration),color var(--duration),border-color var(--duration);white-space:nowrap}
+.btn--outline{background:transparent;color:var(--text-1);border-color:var(--border-strong)}
+.btn--outline:hover{border-color:var(--text-1);color:var(--text-1);text-decoration:none}
+.btn--ghost{background:transparent;color:var(--accent);border:none;padding-left:0;padding-right:0;letter-spacing:.05em}
+.btn--ghost:hover{color:var(--accent-hover);text-decoration:none}
+.img-ph{background:var(--bg-recessed);display:flex;align-items:center;justify-content:center;font-family:var(--font-mono);font-size:var(--text-xs);color:var(--text-3);letter-spacing:.08em;text-transform:uppercase}
+/* Header */
+.site-header{position:fixed;top:0;left:0;right:0;z-index:100;height:var(--header-h);background:var(--bg);border-bottom:1px solid var(--border)}
+.header-inner{max-width:var(--max-w);margin:0 auto;padding:0 var(--gutter);height:100%;display:flex;align-items:center;justify-content:space-between;gap:var(--sp-4)}
+.site-logo{display:flex;align-items:center;gap:10px;font-family:var(--font-body);font-size:var(--text-xs);font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--text-1);text-decoration:none;flex-shrink:0}
+.site-logo:hover{color:var(--text-1);text-decoration:none}
+.logo-mark{width:8px;height:8px;background:var(--accent);flex-shrink:0}
+.site-nav{display:flex;align-items:center;gap:var(--sp-4)}
+.site-nav a{font-size:var(--text-xs);font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--text-3);text-decoration:none;transition:color var(--duration)}
+.site-nav a:hover,.site-nav a.active{color:var(--text-1);text-decoration:none}
+.hamburger{display:none;width:40px;height:40px;background:transparent;border:1px solid var(--border-strong);cursor:pointer;align-items:center;justify-content:center;flex-direction:column;gap:5px;flex-shrink:0}
+.hamburger span{display:block;width:18px;height:1.5px;background:var(--text-1);transition:transform 200ms var(--ease),opacity 200ms var(--ease)}
+.mobile-overlay{display:none;position:fixed;top:var(--header-h);left:0;right:0;bottom:0;background:var(--bg-elevated);z-index:98;flex-direction:column;justify-content:space-between;padding:var(--sp-6) var(--gutter) var(--sp-8);opacity:0;transform:translateX(100%);transition:opacity 250ms,transform 250ms;overflow-y:auto}
+.mobile-overlay.open{opacity:1;transform:translateX(0)}
+.mobile-nav-links{display:flex;flex-direction:column;padding-top:var(--sp-4)}
+.mobile-nav-links a{font-family:var(--font-display);font-size:clamp(1.75rem,6vw,2rem);color:var(--text-2);text-decoration:none;padding:var(--sp-3) 0;line-height:1.1;transition:color var(--duration)}
+.mobile-nav-links a:hover,.mobile-nav-links a.active{color:var(--text-1);text-decoration:none}
+.mobile-nav-footer{padding-top:var(--sp-6);border-top:1px solid var(--border)}
+.mobile-nav-footer-label{font-family:var(--font-mono);font-size:var(--text-xs);color:var(--text-3);letter-spacing:.07em;text-transform:uppercase;margin-bottom:var(--sp-2);display:block}
+.mobile-nav-email{display:block;font-size:var(--text-sm);color:var(--text-2);text-decoration:none;margin-bottom:var(--sp-3);transition:color var(--duration)}
+.mobile-nav-email:hover{color:var(--text-1);text-decoration:none}
+.mobile-nav-socials{display:flex;gap:var(--sp-3)}
+.mobile-nav-socials a{font-family:var(--font-mono);font-size:var(--text-xs);color:var(--text-3);text-decoration:none;letter-spacing:.05em;text-transform:uppercase;min-height:44px;display:flex;align-items:center;transition:color var(--duration)}
+.mobile-nav-socials a:hover{color:var(--text-1);text-decoration:none}
+@media(max-width:768px){.site-nav{display:none}.hamburger{display:flex}.mobile-overlay{display:flex}.mobile-overlay:not(.open){pointer-events:none}}
+.page-push{height:var(--header-h)}
+/* Footer */
+.site-footer{border-top:1px solid var(--border);padding:var(--sp-6) 0}
+.footer-inner{max-width:var(--max-w);margin:0 auto;padding:0 var(--gutter);display:flex;align-items:center;justify-content:space-between;gap:var(--sp-4);flex-wrap:wrap}
+.footer-copy{font-family:var(--font-mono);font-size:var(--text-xs);color:var(--text-3)}
+.footer-links{display:flex;align-items:center;gap:var(--sp-3)}
+.footer-links a{font-size:var(--text-xs);color:var(--text-2);text-decoration:none;font-weight:500;min-height:44px;display:flex;align-items:center;transition:color var(--duration)}
+.footer-links a:hover{color:var(--text-1);text-decoration:none}
+@media(max-width:600px){.footer-inner{flex-direction:column;align-items:center;text-align:center;gap:var(--sp-3)}}
+/* Page header */
+.page-header{padding:clamp(var(--sp-8),8vw,var(--sp-16)) 0 var(--sp-8);border-bottom:1px solid var(--border);margin-bottom:var(--section-pad-lg)}
+.page-header h1{margin:var(--sp-2) 0 var(--sp-3)}
+.page-header p{font-size:var(--text-lg);max-width:54ch;color:var(--text-2)}
+/* Section head */
+.section-head{margin-bottom:var(--sp-8)}
+.section-head h2{margin-bottom:var(--sp-2)}
+.section-head--split{display:flex;align-items:flex-end;justify-content:space-between;gap:var(--sp-4);flex-wrap:wrap;margin-bottom:var(--sp-8)}
+/* Featured article card */
+.featured-card{display:grid;grid-template-columns:1fr 1fr;gap:0;background:var(--bg-elevated);border:1px solid var(--border);overflow:hidden;margin-bottom:var(--section-pad-lg)}
+.featured-card-image{aspect-ratio:4/3;background:var(--bg-recessed);overflow:hidden}
+.featured-card-image img{width:100%;height:100%;object-fit:cover;display:block}
+.featured-card-body{padding:clamp(var(--sp-4),5vw,var(--sp-8));display:flex;flex-direction:column;justify-content:center}
+.featured-badge{font-family:var(--font-mono);font-size:var(--text-xs);color:var(--accent);letter-spacing:.07em;text-transform:uppercase;margin-bottom:var(--sp-2);display:block}
+.featured-card-body h2{margin:var(--sp-2) 0 var(--sp-3)}
+.featured-card-body h2 a{color:var(--text-1);text-decoration:none;transition:color var(--duration)}
+.featured-card-body h2 a:hover{color:var(--accent);text-decoration:none}
+.featured-card-body p{margin-bottom:var(--sp-4)}
+.featured-meta{display:flex;align-items:center;gap:var(--sp-3);font-family:var(--font-mono);font-size:var(--text-xs);color:var(--text-3);margin-bottom:var(--sp-3)}
+.featured-meta .cat{color:var(--accent);text-transform:uppercase;letter-spacing:.05em}
+@media(max-width:768px){.featured-card{grid-template-columns:1fr}.featured-card-body{padding:var(--sp-4)}}
+/* Blog grid */
+.blog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--sp-6)}
+.post-card{display:flex;flex-direction:column}
+.post-card-image{aspect-ratio:3/2;background:var(--bg-recessed);overflow:hidden;margin-bottom:var(--sp-3)}
+.post-card-image.fixed-h{height:200px;aspect-ratio:unset}
+.post-meta{display:flex;align-items:center;gap:var(--sp-2);margin-bottom:var(--sp-2);font-family:var(--font-mono);font-size:var(--text-xs)}
+.post-meta .cat{color:var(--accent);text-transform:uppercase;letter-spacing:.05em}
+.post-meta .date{color:var(--text-3)}
+.post-card h4{font-size:var(--text-lg);margin-bottom:var(--sp-2)}
+.post-card h4 a{color:var(--text-1);text-decoration:none;transition:color var(--duration)}
+.post-card h4 a:hover{color:var(--accent);text-decoration:none}
+.post-card>p{font-size:var(--text-sm);flex-grow:1}
+@media(max-width:1024px){.blog-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:640px){.blog-grid{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{transition-duration:.01ms!important}.mobile-overlay{transform:none!important}}
+</style>
+</head>
+<body>
+
+<header class="site-header" role="banner">
+  <div class="header-inner">
+    <a href="home.html" class="site-logo"><span class="logo-mark"></span>Phil Choi</a>
+    <nav class="site-nav" role="navigation" aria-label="Primary">
+      <a href="home.html">Home</a>
+      <a href="services.html">Services</a>
+      <a href="blog.html" class="active">Blog</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<div class="mobile-overlay" id="mobileOverlay" role="dialog" aria-modal="true" aria-label="Navigation">
+  <nav class="mobile-nav-links">
+    <a href="home.html">Home</a>
+    <a href="services.html">Services</a>
+    <a href="blog.html" class="active">Blog</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+  <div class="mobile-nav-footer">
+    <span class="mobile-nav-footer-label">Get in touch</span>
+    <a href="mailto:hello@philchoi.com" class="mobile-nav-email">hello@philchoi.com</a>
+    <div class="mobile-nav-socials"><a href="#">LinkedIn</a><a href="#">GitHub</a></div>
+  </div>
+</div>
+
+<div class="page-push"></div>
+
+<main role="main">
+
+  <!-- Page intro — pattern-page-header -->
+  <section class="pattern-page-header">
+    <div class="wrap">
+      <div class="page-header">
+        <span class="label label--red">Blog</span>
+        <h1>Writing &amp; ideas</h1>
+        <p>On WordPress, design systems, editorial craft, and the discipline of making things that last.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured article — pattern-posts-featured -->
+  <section class="pattern-posts-featured">
+    <div class="wrap">
+      <div class="section-head--split">
+        <div>
+          <span class="label label--red">Featured article</span>
+        </div>
+      </div>
+      <article class="featured-card">
+        <div class="featured-card-image img-ph">Image · 4:3</div>
+        <div class="featured-card-body">
+          <span class="featured-badge">Featured</span>
+          <div class="featured-meta">
+            <span class="cat">Design Systems</span>
+            <span>March 9, 2025</span>
+            <span>12 min read</span>
+          </div>
+          <h2><a href="post.html">Why most WordPress themes fail their editors</a></h2>
+          <p>The block editor changed everything — except the way most themes are built. After three years building native block themes, here is what I have learned about making WordPress actually work for content editors.</p>
+          <a href="post.html" class="btn btn--outline">Read the article</a>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- Post grid — pattern-posts-grid -->
+  <section class="pattern-posts-grid section">
+    <div class="wrap">
+      <div class="section-head--split">
+        <div>
+          <span class="label label--red">All articles</span>
+          <h2>From the archive</h2>
+        </div>
+        <a href="#" class="btn btn--ghost">Subscribe →</a>
+      </div>
+      <div class="blog-grid">
+        <article class="post-card">
+          <div class="post-card-image fixed-h img-ph">Image</div>
+          <div class="post-meta"><span class="cat">Design</span><span class="date">Feb 28, 2025</span></div>
+          <h4><a href="post.html">The case for fixed type scales in design systems</a></h4>
+          <p>Variable font sizes are powerful. They are also a design problem waiting to happen in the wrong hands.</p>
+        </article>
+        <article class="post-card">
+          <div class="post-card-image fixed-h img-ph">Image</div>
+          <div class="post-meta"><span class="cat">WordPress</span><span class="date">Feb 14, 2025</span></div>
+          <h4><a href="post.html">theme.json is the most underused file in WordPress</a></h4>
+          <p>Most developers treat theme.json as a configuration file. It is actually a design system declaration.</p>
+        </article>
+        <article class="post-card">
+          <div class="post-card-image fixed-h img-ph">Image</div>
+          <div class="post-meta"><span class="cat">Systems</span><span class="date">Jan 30, 2025</span></div>
+          <h4><a href="post.html">On naming things: tokens, variables, and decisions</a></h4>
+          <p>Semantic naming is not a CSS opinion. It is a conversation about how your team makes decisions at scale.</p>
+        </article>
+        <article class="post-card">
+          <div class="post-card-image fixed-h img-ph">Image</div>
+          <div class="post-meta"><span class="cat">WordPress</span><span class="date">Jan 12, 2025</span></div>
+          <h4><a href="post.html">Block patterns as a design constraint</a></h4>
+          <p>When you lock the structure and free the content, editors stop making layout decisions and start making editorial ones.</p>
+        </article>
+        <article class="post-card">
+          <div class="post-card-image fixed-h img-ph">Image</div>
+          <div class="post-meta"><span class="cat">Editorial</span><span class="date">Dec 20, 2024</span></div>
+          <h4><a href="post.html">The discipline of the single-file stylesheet</a></h4>
+          <p>Complexity is a cost. One well-organised stylesheet is easier to maintain than a build pipeline with six moving parts.</p>
+        </article>
+        <article class="post-card">
+          <div class="post-card-image fixed-h img-ph">Image</div>
+          <div class="post-meta"><span class="cat">Design</span><span class="date">Dec 5, 2024</span></div>
+          <h4><a href="post.html">White space is not empty space</a></h4>
+          <p>The grid only works when you honour the intervals. Compression is not density — it is a design failure with consequences.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer" role="contentinfo">
+  <div class="footer-inner">
+    <span class="footer-copy">© 2025 Phil Choi</span>
+    <div class="footer-links">
+      <a href="#">Privacy</a>
+      <a href="#">LinkedIn</a>
+      <a href="#">RSS</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var ham=document.getElementById('hamburger'),overlay=document.getElementById('mobileOverlay'),open=false;
+  ham.addEventListener('click',function(){
+    open=!open;overlay.classList.toggle('open',open);ham.setAttribute('aria-expanded',String(open));
+    var s=ham.querySelectorAll('span');
+    if(open){s[0].style.transform='translateY(6.5px) rotate(45deg)';s[1].style.opacity='0';s[2].style.transform='translateY(-6.5px) rotate(-45deg)';}
+    else{s[0].style.transform='';s[1].style.opacity='';s[2].style.transform='';}
+  });
+  overlay.querySelectorAll('a').forEach(function(l){l.addEventListener('click',function(){
+    open=false;overlay.classList.remove('open');ham.setAttribute('aria-expanded','false');
+    var s=ham.querySelectorAll('span');s[0].style.transform='';s[1].style.opacity='';s[2].style.transform='';
+  });});
+})();
+</script>
+</body>
+</html>
