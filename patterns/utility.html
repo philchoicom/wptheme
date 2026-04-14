@@ -10,7 +10,7 @@
 </script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Services · Phil Choi</title>
+<title>Utility Patterns · Phil Choi</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Instrument+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -61,13 +61,6 @@ a:hover{color:var(--accent-hover);text-decoration-thickness:2px}
 .wrap{max-width:var(--max-w);margin:0 auto;padding:0 var(--gutter)}
 .wrap--narrow{max-width:var(--max-w-narrow);margin:0 auto;padding:0 var(--gutter)}
 .wrap--mid{max-width:var(--max-w-mid);margin:0 auto;padding:0 var(--gutter)}
-.section{padding:var(--section-pad) 0}
-.section--elevated{background:var(--bg-elevated)}
-.section--recessed{background:var(--bg-recessed)}
-.section--inverse{background:var(--bg-inverse)}
-.section--inverse h1,.section--inverse h2,.section--inverse h3,.section--inverse h4{color:#1A1918}
-.section--inverse p{color:#5C5955}
-.section--inverse .label{color:var(--accent)}
 .label{font-family:var(--font-mono);font-size:var(--text-xs);font-weight:500;letter-spacing:.07em;text-transform:uppercase;color:var(--text-3);display:block;margin-bottom:var(--sp-2)}
 .label--red{color:var(--accent)}
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:var(--sp-1);font-family:var(--font-body);font-size:var(--text-xs);font-weight:600;letter-spacing:.07em;text-transform:uppercase;text-decoration:none;padding:.8rem 1.75rem;min-height:44px;cursor:pointer;border:1.5px solid transparent;transition:background-color var(--duration) var(--ease),color var(--duration) var(--ease),border-color var(--duration) var(--ease);white-space:nowrap}
@@ -75,7 +68,6 @@ a:hover{color:var(--accent-hover);text-decoration-thickness:2px}
 .btn--fill:hover{background:var(--accent-hover);border-color:var(--accent-hover);color:#fff;text-decoration:none}
 .btn--outline{background:transparent;color:var(--text-1);border-color:var(--border-strong)}
 .btn--outline:hover{border-color:var(--text-1);color:var(--text-1);text-decoration:none}
-.btn-row{display:flex;flex-wrap:wrap;gap:var(--sp-2);margin-top:var(--sp-4)}
 /* Header */
 .site-header{position:fixed;top:0;left:0;right:0;z-index:100;height:var(--header-h);background:var(--bg);border-bottom:1px solid var(--border)}
 .header-inner{max-width:var(--max-w);margin:0 auto;padding:0 var(--gutter);height:100%;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:var(--sp-2)}
@@ -90,7 +82,6 @@ a:hover{color:var(--accent-hover);text-decoration-thickness:2px}
 .theme-toggle{display:flex;width:40px;height:40px;background:transparent;border:1px solid var(--border-strong);cursor:pointer;align-items:center;justify-content:center;flex-shrink:0;transition:border-color var(--duration) var(--ease)}
 .theme-toggle:hover{border-color:var(--text-1)}
 .theme-toggle svg{width:16px;height:16px;stroke:var(--text-1);fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;transition:stroke var(--duration) var(--ease)}
-.theme-toggle:hover svg{stroke:var(--text-1)}
 [data-theme="dark"] .icon-sun{display:block}
 [data-theme="dark"] .icon-moon{display:none}
 [data-theme="light"] .icon-sun{display:none}
@@ -104,8 +95,6 @@ a:hover{color:var(--accent-hover);text-decoration-thickness:2px}
 .mobile-nav-links a:hover,.mobile-nav-links a.active{color:var(--text-1);text-decoration:none}
 .mobile-nav-footer{padding-top:var(--sp-6);border-top:1px solid var(--border)}
 .mobile-nav-footer-label{font-family:var(--font-mono);font-size:var(--text-xs);color:var(--accent);letter-spacing:.07em;text-transform:uppercase;margin-bottom:var(--sp-2);display:block}
-.mobile-nav-email{display:block;font-size:var(--text-sm);color:var(--text-2);text-decoration:none;margin-bottom:var(--sp-3);transition:color var(--duration)}
-.mobile-nav-email:hover{color:var(--text-1);text-decoration:none}
 .mobile-nav-socials{display:flex;gap:var(--sp-3)}
 .mobile-nav-socials a{font-family:var(--font-mono);font-size:var(--text-xs);color:var(--text-3);text-decoration:none;letter-spacing:.05em;text-transform:uppercase;min-height:44px;display:flex;align-items:center;transition:color var(--duration)}
 .mobile-nav-socials a:hover{color:var(--text-1);text-decoration:none}
@@ -123,44 +112,20 @@ a:hover{color:var(--accent-hover);text-decoration-thickness:2px}
 .page-header{padding:clamp(var(--sp-8),8vw,var(--sp-12)) 0 var(--sp-6);border-bottom:1px solid var(--border)}
 .page-header h1{margin:var(--sp-2) 0 var(--sp-3)}
 .page-header p{font-size:var(--text-lg);max-width:54ch;color:var(--text-2)}
-/* Section head */
-.section-head{margin-bottom:var(--sp-8)}
-.section-head h2{margin-bottom:var(--sp-2)}
-.section-head p{max-width:52ch}
-/* Services grid */
-.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0 var(--sp-6)}
-.service-card{padding:var(--sp-4) 0;border-top:2px solid var(--border)}
-.card-num{font-family:var(--font-mono);font-size:var(--text-xs);color:var(--accent);letter-spacing:.06em;margin-bottom:var(--sp-2);display:block}
-.service-card h4{margin-bottom:var(--sp-2)}
-.service-card p{font-size:var(--text-base)}
-.service-card ul{list-style:none;margin-top:var(--sp-3);display:flex;flex-direction:column;gap:0}
-.service-card ul li{font-size:var(--text-base);color:var(--text-2);display:flex;align-items:baseline;gap:var(--sp-2);padding:var(--sp-1) 0;border-bottom:1px solid var(--border)}
-.service-card ul li:first-child{border-top:1px solid var(--border)}
-.service-card ul li::before{content:'—';font-family:var(--font-mono);color:var(--accent);flex-shrink:0}
-@media(max-width:768px){.services-grid{grid-template-columns:1fr;gap:0}}
-/* Process steps */
-.steps-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--sp-6);counter-reset:steps}
-.step{counter-increment:steps;padding-top:var(--sp-4);border-top:1px solid var(--border)}
-.step::before{content:counter(steps,decimal-leading-zero);font-family:var(--font-mono);font-size:var(--text-xs);color:var(--accent);letter-spacing:.07em;display:block;margin-bottom:var(--sp-2)}
-.step h4{font-size:var(--text-lg);margin-bottom:var(--sp-2)}
-.step p{font-size:var(--text-base)}
-@media(max-width:900px){.steps-grid{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:480px){.steps-grid{grid-template-columns:1fr}}
-/* Pricing */
-.pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--sp-4);align-items:start}
-.pricing-card{padding:var(--sp-6);background:var(--bg-elevated)}
-.pricing-card.featured{outline:1.5px solid var(--accent)}
-.plan-name{font-family:var(--font-mono);font-size:var(--text-xs);color:var(--text-3);letter-spacing:.08em;text-transform:uppercase;margin-bottom:var(--sp-4);display:block}
-.pricing-card.featured .plan-name{color:var(--accent)}
-.price{font-family:var(--font-display);font-size:var(--text-4xl);color:var(--text-1);line-height:1;display:block}
-.price-period{font-family:var(--font-mono);font-size:var(--text-xs);color:var(--text-3);letter-spacing:.05em;margin-top:var(--sp-1);margin-bottom:var(--sp-4);display:block}
-.pricing-card>p{font-size:var(--text-base);margin-bottom:var(--sp-4);padding-bottom:var(--sp-4);border-bottom:1px solid var(--border)}
-.feature-list{list-style:none;margin-bottom:var(--sp-6)}
-.feature-list li{font-size:var(--text-base);color:var(--text-2);padding:var(--sp-1) 0;display:flex;align-items:baseline;gap:var(--sp-2)}
-.feature-list li::before{content:'—';color:var(--text-3);font-family:var(--font-mono);flex-shrink:0}
-.pricing-card .btn{width:100%}
-@media(max-width:768px){.pricing-grid{grid-template-columns:1fr}}
-/* FAQ */
+/* Pattern subnav */
+.pattern-subnav{display:flex;align-items:center;gap:var(--sp-6);padding:var(--sp-3) 0;border-bottom:1px solid var(--border);flex-wrap:wrap}
+.pattern-subnav a{font-family:var(--font-mono);font-size:var(--text-xs);color:var(--text-3);text-decoration:none;letter-spacing:.06em;text-transform:uppercase;transition:color var(--duration);min-height:44px;display:flex;align-items:center}
+.pattern-subnav a:hover{color:var(--text-1);text-decoration:none}
+/* Pattern blocks */
+.pattern-block{padding:var(--sp-8) 0;border-top:1px solid var(--border)}
+.pattern-meta{display:flex;align-items:baseline;gap:var(--sp-4);margin-bottom:var(--sp-6)}
+.pattern-meta-name{font-family:var(--font-mono);font-size:var(--text-xs);color:var(--text-1);font-weight:500;letter-spacing:.06em}
+.pattern-meta-desc{font-family:var(--font-mono);font-size:var(--text-xs);color:var(--text-3);letter-spacing:.04em}
+.pattern-preview{border:1px solid var(--border);padding:var(--section-pad) 0}
+
+/* ── Utility pattern styles (extracted from source files) ── */
+
+/* pattern-utility-faq */
 details{border-top:1px solid var(--border)}
 details:last-child{border-bottom:1px solid var(--border)}
 details summary{display:flex;justify-content:space-between;align-items:center;padding:var(--sp-3) 0;cursor:pointer;list-style:none;font-weight:600;color:var(--text-1);gap:var(--sp-4);user-select:none}
@@ -168,7 +133,10 @@ details summary::-webkit-details-marker{display:none}
 details summary::after{content:'+';font-family:var(--font-body);font-size:var(--text-xl);font-weight:300;color:var(--accent);flex-shrink:0;transition:transform 200ms var(--ease);line-height:1}
 details[open] summary::after{transform:rotate(45deg)}
 .faq-answer{padding:0 0 var(--sp-4);color:var(--text-2);max-width:65ch}
-/* Contact section */
+[data-theme="light"] details{border-top-color:var(--border)}
+[data-theme="light"] details:last-child{border-bottom-color:var(--border)}
+
+/* pattern-utility-contact-grid */
 .contact-section-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--sp-6)}
 .contact-block{padding-top:var(--sp-4);border-top:1px solid var(--border)}
 .contact-block-label{font-family:var(--font-mono);font-size:var(--text-xs);color:var(--accent);letter-spacing:.07em;text-transform:uppercase;margin-bottom:var(--sp-2);display:block}
@@ -176,12 +144,35 @@ details[open] summary::after{transform:rotate(45deg)}
 .contact-block a{display:block;text-decoration:none;transition:color var(--duration)}
 .contact-block a:hover{color:var(--text-1);text-decoration:none}
 @media(max-width:768px){.contact-section-grid{grid-template-columns:1fr;gap:var(--sp-4)}}
-/* CTA */
-.cta-block{padding:var(--section-pad-lg) var(--gutter);text-align:center}
-.cta-block h2{margin-bottom:var(--sp-3)}
-.cta-block p{margin:0 auto var(--sp-6);max-width:50ch}
-[data-theme="light"] details{border-top-color:var(--border-strong)}
-[data-theme="light"] details:last-child{border-bottom-color:var(--border-strong)}
+
+/* pattern-utility-contact-form */
+.contact-grid{display:grid;grid-template-columns:1fr 2fr;gap:clamp(var(--sp-8),8vw,var(--sp-16));align-items:start}
+@media(max-width:768px){.contact-grid{grid-template-columns:1fr;gap:var(--sp-8)}}
+.contact-details h3{font-size:var(--text-xl);margin-bottom:var(--sp-4)}
+.contact-detail-item{padding:var(--sp-3) 0;border-top:1px solid var(--border)}
+.contact-detail-item:last-child{border-bottom:1px solid var(--border)}
+.contact-detail-label{font-family:var(--font-mono);font-size:var(--text-xs);color:var(--accent);letter-spacing:.06em;text-transform:uppercase;display:block;margin-bottom:var(--sp-1)}
+.contact-detail-val{font-size:var(--text-base);color:var(--text-2)}
+.contact-detail-val a{color:var(--text-2);text-decoration:none;transition:color var(--duration)}
+.contact-detail-val a:hover{color:var(--text-1);text-decoration:none}
+.contact-form h3{font-size:var(--text-xl);margin-bottom:var(--sp-4)}
+.form-stack{display:flex;flex-direction:column;gap:var(--sp-3)}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-3)}
+@media(max-width:480px){.form-row{grid-template-columns:1fr}}
+.form-field{display:flex;flex-direction:column;gap:var(--sp-1)}
+.form-field label{font-family:var(--font-mono);font-size:var(--text-xs);font-weight:500;letter-spacing:.07em;text-transform:uppercase;color:var(--text-3)}
+.form-field input,.form-field textarea,.form-field select{background:var(--bg-elevated);border:1px solid var(--border);color:var(--text-1);font-family:var(--font-body);font-size:var(--text-base);padding:var(--sp-2) var(--sp-3);border-radius:2px;outline:none;transition:border-color var(--duration);width:100%}
+.form-field input:focus,.form-field textarea:focus,.form-field select:focus{border-color:var(--text-3)}
+.form-field textarea{resize:vertical;min-height:160px;line-height:1.6}
+
+/* pattern-utility-newsletter */
+.newsletter-block{display:grid;grid-template-columns:1fr 1fr;gap:clamp(var(--sp-6),6vw,var(--sp-12));align-items:start}
+@media(max-width:640px){.newsletter-block{grid-template-columns:1fr;gap:var(--sp-6)}}
+.newsletter-copy h3{margin-bottom:var(--sp-2)}
+.newsletter-copy p{font-size:var(--text-base)}
+.newsletter-form{display:flex;flex-direction:column;gap:var(--sp-3)}
+.newsletter-note{font-family:var(--font-mono);font-size:var(--text-xs);color:var(--text-3);letter-spacing:.04em;margin-top:var(--sp-1)}
+
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{transition-duration:.01ms!important}.mobile-overlay{transform:none!important}}
 /* ── LIGHT MODE TOKENS ── */
 [data-theme="light"]{
@@ -191,34 +182,24 @@ details[open] summary::after{transform:rotate(45deg)}
   --border:#E2DFDA;--border-strong:#C9C5BF;--code-bg:#EFEDE9;
   --accent:#C41B1B;--accent-hover:#E02020;
 }
-/* Light mode inverse section text overrides (hardcoded in dark) */
-[data-theme="light"] .section--inverse h1,
-[data-theme="light"] .section--inverse h2,
-[data-theme="light"] .section--inverse h3,
-[data-theme="light"] .section--inverse h4{color:#F0EFEB}
-[data-theme="light"] .section--inverse p{color:#C8C5C0}
-[data-theme="light"] .section--inverse .label{color:var(--accent)}
-/* Light mode header */
 [data-theme="light"] .site-header{background:var(--bg);border-bottom-color:var(--border)}
 [data-theme="light"] .mobile-overlay{background:var(--bg-elevated)}
 [data-theme="light"] .hamburger span{background:var(--text-1)}
 [data-theme="light"] .theme-toggle svg{stroke:var(--text-2)}
 [data-theme="light"] .theme-toggle:hover svg{stroke:var(--text-1)}
 [data-theme="light"] .mobile-nav-footer{border-top-color:var(--border)}
-[data-theme="light"] pre,[data-theme="light"] code{background:var(--code-bg);color:var(--text-1)}
-
 </style>
 </head>
 <body>
 
 <header class="site-header" role="banner">
   <div class="header-inner">
-    <a href="home.html" class="site-logo"><span class="logo-mark"></span>Phil Choi</a>
+    <a href="../home.html" class="site-logo"><span class="logo-mark"></span>Phil Choi</a>
     <nav class="site-nav" role="navigation" aria-label="Primary">
-      <a href="home.html">Home</a>
-      <a href="services.html" class="active">Services</a>
-      <a href="blog.html">Blog</a>
-      <a href="contact.html">Contact</a>
+      <a href="../home.html">Home</a>
+      <a href="../services.html">Services</a>
+      <a href="../blog.html">Blog</a>
+      <a href="../contact.html">Contact</a>
     </nav>
     <div class="header-end">
       <button class="theme-toggle" id="themeToggle" aria-label="Toggle colour scheme">
@@ -236,15 +217,16 @@ details[open] summary::after{transform:rotate(45deg)}
 
 <div class="mobile-overlay" id="mobileOverlay" role="dialog" aria-modal="true" aria-label="Navigation">
   <nav class="mobile-nav-links">
-    <a href="home.html">Home</a>
-    <a href="services.html" class="active">Services</a>
-    <a href="blog.html">Blog</a>
-    <a href="contact.html">Contact</a>
+    <a href="../home.html">Home</a>
+    <a href="../services.html">Services</a>
+    <a href="../blog.html">Blog</a>
+    <a href="../contact.html">Contact</a>
   </nav>
   <div class="mobile-nav-footer">
-    <span class="mobile-nav-footer-label">Get in touch</span>
-    <a href="mailto:hello@philchoi.com" class="mobile-nav-email">hello@philchoi.com</a>
-    <div class="mobile-nav-socials"><a href="#">LinkedIn</a><a href="#">GitHub</a></div>
+    <span class="mobile-nav-footer-label">Pattern library</span>
+    <div class="mobile-nav-socials">
+      <a href="../patterns.html">Index</a>
+    </div>
   </div>
 </div>
 
@@ -252,187 +234,212 @@ details[open] summary::after{transform:rotate(45deg)}
 
 <main role="main">
 
-  <!-- Page header — pattern-page-header -->
-  <section class="pattern-page-header">
-    <div class="wrap">
-      <div class="page-header">
-        <span class="label label--red">Services</span>
-        <h1>Three disciplines,<br>one practice.</h1>
-        <p>WordPress block themes, design systems, and editorial writing — each delivered with full attention and documented from first principles.</p>
-      </div>
+  <div class="wrap">
+    <div class="page-header">
+      <span class="label label--red">Pattern category 08 · Utility</span>
+      <h1>Utility patterns</h1>
+      <p>Supporting structural patterns. FAQ accordions, contact info, forms, and newsletter prompts.</p>
     </div>
-  </section>
+  </div>
 
-  <!-- Services grid — pattern-services-grid -->
-  <section class="pattern-services-grid section">
-    <div class="wrap">
-      <div class="section-head">
-        <span class="label label--red">What's on offer</span>
-        <h2>The work</h2>
-      </div>
-      <div class="services-grid">
-        <div class="service-card">
-          <span class="card-num">01</span>
-          <h4>WordPress Block Themes</h4>
-          <p>Standalone themes built on native core blocks. Every pattern is editable, every layout is structured, every token is defined in theme.json.</p>
-          <ul>
-            <li>Block pattern library</li>
-            <li>theme.json token system</li>
-            <li>Full editor compatibility</li>
-            <li>Mobile-responsive structure</li>
-          </ul>
-        </div>
-        <div class="service-card">
-          <span class="card-num">02</span>
-          <h4>Design Systems</h4>
-          <p>Token-first design systems with semantic color roles, fixed type scales, and documented spacing grids. Built to survive handoff and scale without chaos.</p>
-          <ul>
-            <li>Design token architecture</li>
-            <li>Figma variable mapping</li>
-            <li>Component documentation</li>
-            <li>Shared naming conventions</li>
-          </ul>
-        </div>
-        <div class="service-card">
-          <span class="card-num">03</span>
-          <h4>Editorial Writing</h4>
-          <p>Long-form writing about design, WordPress, and the web. Strategy, voice, and structure — for practitioners with something considered to say.</p>
-          <ul>
-            <li>Technical documentation</li>
-            <li>Editorial essays</li>
-            <li>Product copy</li>
-            <li>Content strategy</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
+  <div class="wrap">
+    <nav class="pattern-subnav" aria-label="Pattern variants">
+      <a href="#pattern-utility-faq">FAQ</a>
+      <a href="#pattern-utility-contact-grid">Contact grid</a>
+      <a href="#pattern-utility-contact-form">Contact form</a>
+      <a href="#pattern-utility-newsletter">Newsletter</a>
+      <a href="../patterns.html">← All patterns</a>
+    </nav>
+  </div>
 
-  <!-- Process steps — pattern-process-steps -->
-  <section class="pattern-process-steps section section--elevated">
-    <div class="wrap">
-      <div class="section-head">
-        <span class="label label--red">How it works</span>
-        <h2>A considered process</h2>
-      </div>
-      <div class="steps-grid">
-        <div class="step">
-          <h4>Discovery</h4>
-          <p>A direct conversation about what you need, what exists, and what success looks like. No questionnaire, no brief template.</p>
-        </div>
-        <div class="step">
-          <h4>Specification</h4>
-          <p>Design token definition, typography scale, spacing system. Everything documented before a line of code is written.</p>
-        </div>
-        <div class="step">
-          <h4>Build</h4>
-          <p>Native block theme development against the specification. Iterative, documented, and tested across devices and editors.</p>
-        </div>
-        <div class="step">
-          <h4>Handover</h4>
-          <p>Full documentation, editor training if needed, and a codebase you can maintain without external support.</p>
-        </div>
-      </div>
-    </div>
-  </section>
+  <div class="wrap">
 
-  <!-- Pricing — pattern-pricing -->
-  <section class="pattern-pricing section">
-    <div class="wrap">
-      <div class="section-head">
-        <span class="label label--red">Investment</span>
-        <h2>Transparent pricing</h2>
-        <p>Fixed-scope engagements with clear deliverables. No hourly billing, no scope creep surprises.</p>
+    <!-- ── 01 pattern-utility-faq ── -->
+    <div class="pattern-block" id="pattern-utility-faq">
+      <div class="pattern-meta">
+        <span class="pattern-meta-name">pattern-utility-faq</span>
+        <span class="pattern-meta-desc">Semantic details/summary · line-divided · accent + indicator · no box styling</span>
       </div>
-      <div class="pricing-grid">
-        <div class="pricing-card">
-          <span class="plan-name">Foundation</span>
-          <span class="price">£3,500</span>
-          <span class="price-period">Single project</span>
-          <p>A focused engagement for smaller sites. Design system definition and a complete block theme.</p>
-          <ul class="feature-list">
-            <li>theme.json token system</li>
-            <li>Up to 8 block patterns</li>
-            <li>3 page templates</li>
-            <li>Mobile-responsive build</li>
-            <li>Editor documentation</li>
-          </ul>
-          <a href="contact.html" class="btn btn--outline">Enquire</a>
+      <div class="pattern-preview">
+        <section class="pattern-utility-faq">
+        <div class="wrap--mid">
+          <div class="faq-list">
+            <details>
+              <summary>Do you work with clients outside the UK?</summary>
+              <div class="faq-answer">Yes. The practice is remote-first and works with clients across Europe and North America. All project communication happens asynchronously by default, with video calls scheduled when needed.</div>
+            </details>
+            <details>
+              <summary>How long does a typical project take?</summary>
+              <div class="faq-answer">Foundation engagements typically run 4–6 weeks. Standard projects run 8–12 weeks depending on scope and content availability. Timelines are agreed in writing before any work begins.</div>
+            </details>
+            <details>
+              <summary>Do you work with existing WordPress sites?</summary>
+              <div class="faq-answer">Sometimes, depending on the existing setup. Most engagements start from a clean base or involve migrating content into a new block theme. A brief discovery call will clarify whether your existing site is a good starting point.</div>
+            </details>
+            <details>
+              <summary>What do you need from clients to get started?</summary>
+              <div class="faq-answer">A clear sense of what you're trying to accomplish, existing brand assets if they exist, and enough content to make layout decisions. No design skills or technical knowledge required on your side.</div>
+            </details>
+            <details>
+              <summary>Can you maintain the site after launch?</summary>
+              <div class="faq-answer">The Standard project deliverable includes a codebase and documentation designed for independent maintenance. If ongoing support is needed, a monthly retainer can be arranged at the outset.</div>
+            </details>
+          </div>
         </div>
-        <div class="pricing-card featured">
-          <span class="plan-name">Standard</span>
-          <span class="price">£6,500</span>
-          <span class="price-period">Single project</span>
-          <p>The full service. A complete design system, extended pattern library, and editorial foundation.</p>
-          <ul class="feature-list">
-            <li>Full design token architecture</li>
-            <li>Up to 20 block patterns</li>
-            <li>6 page templates</li>
-            <li>Mobile-responsive build</li>
-            <li>Editor documentation</li>
-            <li>Figma handoff files</li>
-          </ul>
-          <a href="contact.html" class="btn btn--fill">Start a project</a>
-        </div>
-        <div class="pricing-card">
-          <span class="plan-name">Retainer</span>
-          <span class="price">£1,800</span>
-          <span class="price-period">Per month</span>
-          <p>Ongoing design and development support for teams who need consistent, considered work.</p>
-          <ul class="feature-list">
-            <li>Priority availability</li>
-            <li>Design system stewardship</li>
-            <li>Monthly pattern additions</li>
-            <li>Async review and feedback</li>
-            <li>Quarterly strategy sessions</li>
-          </ul>
-          <a href="contact.html" class="btn btn--outline">Enquire</a>
-        </div>
+        </section>
       </div>
     </div>
-  </section>
 
-  <!-- FAQ — pattern-utility-faq -->
-  <section class="pattern-utility-faq section section--recessed">
-    <div class="wrap--mid">
-      <div class="section-head">
-        <span class="label label--red">Common questions</span>
-        <h2>FAQ</h2>
+    <!-- ── 02 pattern-utility-contact-grid ── -->
+    <div class="pattern-block" id="pattern-utility-contact-grid">
+      <div class="pattern-meta">
+        <span class="pattern-meta-name">pattern-utility-contact-grid</span>
+        <span class="pattern-meta-desc">3-column · border-top divided · mono label · typographic, no card styling</span>
       </div>
-      <div class="faq-list">
-        <details>
-          <summary>Do you work with clients outside the UK?</summary>
-          <div class="faq-answer">Yes. The practice is remote-first and works with clients across Europe and North America. All project communication happens asynchronously by default, with video calls scheduled when needed.</div>
-        </details>
-        <details>
-          <summary>How long does a typical project take?</summary>
-          <div class="faq-answer">Foundation engagements typically run 4–6 weeks. Standard projects run 8–12 weeks depending on scope and content availability. Timelines are agreed in writing before any work begins.</div>
-        </details>
-        <details>
-          <summary>Do you work with existing WordPress sites?</summary>
-          <div class="faq-answer">Sometimes, depending on the existing setup. Most engagements start from a clean base or involve migrating content into a new block theme. A brief discovery call will clarify whether your existing site is a good starting point.</div>
-        </details>
-        <details>
-          <summary>What do you need from clients to get started?</summary>
-          <div class="faq-answer">A clear sense of what you're trying to accomplish, existing brand assets if they exist, and enough content to make layout decisions. No design skills or technical knowledge required on your side.</div>
-        </details>
-        <details>
-          <summary>Can you maintain the site after launch?</summary>
-          <div class="faq-answer">The Standard project deliverable includes a codebase and documentation designed for independent maintenance. If ongoing support is needed, a monthly retainer can be arranged at the outset.</div>
-        </details>
+      <div class="pattern-preview">
+        <div class="pattern-utility-contact-grid">
+        <div class="wrap">
+          <div class="contact-section-grid">
+            <div class="contact-block">
+              <span class="contact-block-label">Email</span>
+              <p><a href="#">hello@philchoi.com</a></p>
+            </div>
+            <div class="contact-block">
+              <span class="contact-block-label">Location</span>
+              <p>London, UK<br>Remote-first</p>
+            </div>
+            <div class="contact-block">
+              <span class="contact-block-label">Availability</span>
+              <p>Accepting new projects.<br>Discovery calls available weekly.</p>
+            </div>
+            <div class="contact-block">
+              <span class="contact-block-label">Response time</span>
+              <p>Within one business day</p>
+            </div>
+            <div class="contact-block">
+              <span class="contact-block-label">Timezone</span>
+              <p>GMT / BST<br>Flexible for US West Coast</p>
+            </div>
+            <div class="contact-block">
+              <span class="contact-block-label">Elsewhere</span>
+              <a href="#">LinkedIn</a>
+              <a href="#">GitHub</a>
+            </div>
+          </div>
+        </div>
+        </div>
       </div>
     </div>
-  </section>
 
-  <!-- CTA — pattern-contact-section -->
-  <section class="pattern-contact-section section--inverse">
-    <div class="cta-block">
-      <span class="label label--red">Next step</span>
-      <h2>Ready to start a conversation?</h2>
-      <p>Send a brief message about what you're working on. No commitment required — just enough to understand whether the work is a good fit.</p>
-      <a href="contact.html" class="btn btn--fill">Get in touch</a>
+    <!-- ── 03 pattern-utility-contact-form ── -->
+    <div class="pattern-block" id="pattern-utility-contact-form">
+      <div class="pattern-meta">
+        <span class="pattern-meta-name">pattern-utility-contact-form</span>
+        <span class="pattern-meta-desc">1/3 + 2/3 grid · details sidebar · stacked form fields · mono labels · 2px border-radius on inputs</span>
+      </div>
+      <div class="pattern-preview">
+        <section class="pattern-utility-contact-form">
+        <div class="wrap">
+          <div class="contact-grid">
+
+            <aside class="contact-details">
+              <h3>Get in touch</h3>
+              <div class="contact-detail-item">
+                <span class="contact-detail-label">Email</span>
+                <div class="contact-detail-val"><a href="#">hello@philchoi.com</a></div>
+              </div>
+              <div class="contact-detail-item">
+                <span class="contact-detail-label">Location</span>
+                <div class="contact-detail-val">London, UK<br>Remote-first</div>
+              </div>
+              <div class="contact-detail-item">
+                <span class="contact-detail-label">Response time</span>
+                <div class="contact-detail-val">Within one business day</div>
+              </div>
+              <div class="contact-detail-item">
+                <span class="contact-detail-label">Availability</span>
+                <div class="contact-detail-val">Accepting new projects.<br>Discovery calls available weekly.</div>
+              </div>
+              <div class="contact-detail-item">
+                <span class="contact-detail-label">Elsewhere</span>
+                <div class="contact-detail-val">
+                  <a href="#">LinkedIn</a><br>
+                  <a href="#">GitHub</a>
+                </div>
+              </div>
+            </aside>
+
+            <div class="contact-form">
+              <h3>Send a message</h3>
+              <div class="form-stack">
+                <div class="form-row">
+                  <div class="form-field">
+                    <label for="u-name">Name</label>
+                    <input type="text" id="u-name" name="name" placeholder="Your name" autocomplete="name">
+                  </div>
+                  <div class="form-field">
+                    <label for="u-email">Email</label>
+                    <input type="email" id="u-email" name="email" placeholder="your@email.com" autocomplete="email">
+                  </div>
+                </div>
+                <div class="form-field">
+                  <label for="u-subject">Subject</label>
+                  <select id="u-subject" name="subject">
+                    <option value="">Select a topic</option>
+                    <option>WordPress block theme</option>
+                    <option>Design system</option>
+                    <option>Editorial writing</option>
+                    <option>Other</option>
+                  </select>
+                </div>
+                <div class="form-field">
+                  <label for="u-message">Message</label>
+                  <textarea id="u-message" name="message" placeholder="Tell me briefly what you're working on and what kind of help you're looking for."></textarea>
+                </div>
+                <div>
+                  <button type="submit" class="btn btn--fill">Send message</button>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+        </section>
+      </div>
     </div>
-  </section>
+
+    <!-- ── 04 pattern-utility-newsletter ── -->
+    <div class="pattern-block" id="pattern-utility-newsletter">
+      <div class="pattern-meta">
+        <span class="pattern-meta-name">pattern-utility-newsletter</span>
+        <span class="pattern-meta-desc">2-column · copy left · inline form right · no decorative styling · system-aligned</span>
+      </div>
+      <div class="pattern-preview">
+        <section class="pattern-utility-newsletter">
+        <div class="wrap">
+          <div class="newsletter-block">
+            <div class="newsletter-copy">
+              <span class="label label--red">Writing</span>
+              <h3>Notes on design and systems</h3>
+              <p>Occasional essays and observations on design systems, editorial craft, and building for the long term. No frequency guarantees.</p>
+            </div>
+            <div class="newsletter-form">
+              <div class="form-field">
+                <label for="nl-email">Email address</label>
+                <input type="email" id="nl-email" name="email" placeholder="your@email.com" autocomplete="email">
+              </div>
+              <div>
+                <button type="submit" class="btn btn--outline">Subscribe</button>
+              </div>
+              <p class="newsletter-note">No tracking. Unsubscribe any time.</p>
+            </div>
+          </div>
+        </div>
+        </section>
+      </div>
+    </div>
+
+  </div><!-- /.wrap -->
 
 </main>
 
